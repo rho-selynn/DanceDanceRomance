@@ -113,6 +113,11 @@ public class GameManager : MonoBehaviour
         {
             crowdBoo.Play();
         }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            // basically to ensure that we continue the neutral silence
+            crowdBoo.Stop();
+        }
     }
 
 
@@ -220,7 +225,7 @@ public class GameManager : MonoBehaviour
         //UI
         StartCoroutine(display.TextDisplay("The round is now over."));
 
-        yield return new WaitForSeconds(1F);
+        yield return new WaitForSeconds(2F);
 
         //trigger the curtain.
         curtain.toggle();
