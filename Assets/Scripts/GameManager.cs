@@ -25,12 +25,14 @@ public class GameManager : MonoBehaviour
     public string CompType;
 
     private AudioSource danceMusic;
-    private AudioSource crowdSound;
+    private AudioSource crowdCheer;
+    private AudioSource crowdBoo;
 
     void Start()
     {
         danceMusic = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
-        crowdSound = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioSource>();
+        crowdCheer = GameObject.FindGameObjectWithTag("Cheer").GetComponent<AudioSource>();
+        crowdBoo = GameObject.FindGameObjectWithTag("Boo").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -103,9 +105,13 @@ public class GameManager : MonoBehaviour
             compObject.CompSet("BF");
             CompType = "Black Female";
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        if (Input.GetKeyDown(KeyCode.L))
+        {   // restart the scene
             SceneManager.LoadScene(0);
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            crowdBoo.Play();
         }
     }
 
@@ -167,7 +173,7 @@ public class GameManager : MonoBehaviour
         spotLight.ToggleActivation();
 
         //crowd
-        crowdSound.Play();
+        crowdCheer.Play();
 
         yield return new WaitForSeconds(2f);
 
@@ -187,7 +193,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         //stop crowd sound
-        crowdSound.Stop();
+        crowdCheer.Stop();
 
         //light change 
         spotLight.ToggleLocation();
@@ -201,7 +207,7 @@ public class GameManager : MonoBehaviour
 
         //instructions 2 your turn now:
         //StartCoroutine(display2.YourTurnDisp(turnLength));
-        StartCoroutine(display.TextDisplay("It is now your turn to dance."));
+        StartCoroutine(display.TextDisplay("It is now your turn to dance.\n \nParticipant 2: please refer to the sheet to control audience reactions"));
 
         yield return new WaitForSeconds(turnLength);
 

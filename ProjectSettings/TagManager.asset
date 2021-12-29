@@ -8,6 +8,8 @@ TagManager:
   - Sound
   - Display
   - Head
+  - Cheer
+  - Boo
   layers:
   - Default
   - TransparentFX

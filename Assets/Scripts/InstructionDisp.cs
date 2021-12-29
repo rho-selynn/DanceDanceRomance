@@ -21,7 +21,7 @@ public class InstructionDisp : MonoBehaviour
     {
         directionsText.gameObject.transform.parent.parent.gameObject.SetActive(true);
         directionsText.text = text;
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(10f);
         directionsText.gameObject.transform.parent.parent.gameObject.SetActive(false);
     }
 
